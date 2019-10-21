@@ -27,6 +27,7 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+import com.squareup.picasso.Picasso;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -38,6 +39,8 @@ import android.widget.AdapterView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import de.hdodenhof.circleimageview.CircleImageView;
+
 public class MainAdminActivity extends AppCompatActivity {
 
     private AppBarConfiguration mAppBarConfiguration;
@@ -46,6 +49,7 @@ public class MainAdminActivity extends AppCompatActivity {
     private ActionBarDrawerToggle toggle;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
     private FirebaseUser user = firebaseAuth.getCurrentUser();
+    private CircleImageView imgUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +62,9 @@ public class MainAdminActivity extends AppCompatActivity {
         NavigationView navigationView = findViewById(R.id.nav_view);
 
         View navHeader = navigationView.getHeaderView(0);
-        lblUser = navHeader.findViewById(R.id.txtUser);
-        lblEmail = navHeader.findViewById(R.id.email);
+        lblUser = navHeader.findViewById(R.id.lblNavAdminUser);
+        lblEmail = navHeader.findViewById(R.id.lblNavAdminEmail);
+        imgUser = navHeader.findViewById(R.id.imageNavAdminUser);
 
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
@@ -68,31 +73,34 @@ public class MainAdminActivity extends AppCompatActivity {
             goToLogin();
         }
 
-//        // User Authentication
-//        FirebaseDatabase database = FirebaseDatabase.getInstance();
-//        DatabaseReference myRef = database.getReference("users");
-//
-//
-//        myRef.child(user.getUid()+"name").addListenerForSingleValueEvent(new ValueEventListener() {
-//            @Override
-//            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-//                String name = dataSnapshot.getValue(String.class);
-//
-//            }
-//
-//            @Override
-//            public void onCancelled(@NonNull DatabaseError databaseError) {
-//
-//            }
-//        });
+        // User Authentication
+        FirebaseDatabase database = FirebaseDatabase.getInstance();
+        DatabaseReference myRef = database.getReference("users");
 
+        myRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                UserClass userDatabase = dataSnapshot.getValue(UserClass.class);
+                if(userDatabase.getName()!=null){
+                    lblUser.setText(userDatabase.getName());
+                }
+                if(userDatabase.getEmail()!=null){
+                    lblEmail.setText(userDatabase.getEmail());
+                }
+                if(userDatabase.getUrlImg()!=null){
+                    Picasso.get().load(userDatabase.getUrlImg()).into(imgUser);
+                }
+            }
 
-//        if(user==null){
-//            goToLogin();
-//        }
-//
-//        Toast.makeText(this, user.getUid(),Toast.LENGTH_SHORT).show();
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
 
+            }
+        });
+
+        if(user==null){
+            goToLogin();
+        }
 
 
         // Passing each menu ID as a set of Ids because each

@@ -14,8 +14,8 @@
         android:layout_height="wrap_content"
         android:text="@string/login"
         android:textAlignment="center"
-        android:textColor="@android:color/black"
-        android:textSize="32sp"
+        android:fontFamily="@font/rubik_bold"
+        android:textSize="40sp"
         android:layout_marginBottom="15dp">
     </TextView>
 
@@ -23,10 +23,10 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/user"
-        android:textColor="@android:color/black"
         android:layout_margin="15dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
+        android:fontFamily="@font/rubik_medium"
         android:textSize="20sp">
     </TextView>
 
@@ -46,7 +46,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/password"
-        android:textColor="@android:color/black"
+        android:fontFamily="@font/rubik_medium"
         android:layout_margin="15dp"
         android:layout_marginStart="40dp"
         android:layout_marginEnd="40dp"
@@ -67,8 +67,12 @@
 
     <Button
         android:id="@+id/btnLogin"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:text="@string/login"
-        android:textSize="20sp"/>
+        android:textSize="16sp"
+        android:fontFamily="@font/rubik_medium"
+        android:background="@drawable/button_radius"
+        android:layout_margin="15dp"
+        android:foreground="?android:attr/selectableItemBackground"/>
 </LinearLayout>
