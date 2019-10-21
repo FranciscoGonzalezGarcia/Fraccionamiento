@@ -25,6 +25,12 @@
     <string name="action_logout">Cerrar sesión</string>
     <string name="open">open</string>
     <string name="close">close</string>
+    <string name="error_empty_field">Este campo no puede estar vacío</string>
+    <string name="error">Error</string>
+    <string name="warning">Atención</string>
+    <string name="fatal_error_login">Hubo un error al intenar iniciar sesión. Por favor intente iniciar sesión más tarde</string>
+    <string name="invalid_credentials">Ususario o contraseña no validos</string>
+    <string name="ok">Ok</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>
