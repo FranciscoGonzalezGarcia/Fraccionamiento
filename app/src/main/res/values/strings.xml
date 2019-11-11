@@ -29,8 +29,26 @@
     <string name="error">Error</string>
     <string name="warning">Atención</string>
     <string name="fatal_error_login">Hubo un error al intenar iniciar sesión. Por favor intente iniciar sesión más tarde</string>
-    <string name="invalid_credentials">Ususario o contraseña no validos</string>
+    <string name="invalid_credentials">Usuario o contraseña no validos</string>
     <string name="ok">Ok</string>
+    <string name="search">Buscar...</string>
+    <string name="no_element_found">No se encontrarón elementos</string>
+    <string name="name">name</string>
+    <string name="last_name">lastName</string>
+    <string name="add_new_user">Agregar Usuario</string>
+    <string name="name_spanish">Nombre</string>
+    <string name="last_name_spn">Apellido</string>
+    <string name="name_span">Nombre</string>
+    <string name="email_spn">Correo</string>
+    <string name="password_confirm">Confirmar contraseña</string>
+    <string name="refill_data">Llena los siguientes campos</string>
+    <string name="cancel">Cancelar</string>
+    <string name="edit_data">Edita los datos requeridos</string>
+    <string name="edit_user">Editar Usuario</string>
+    <string name="reset_password">Reestablecer contraseña</string>
+    <string name="save">Guardar</string>
+    <string name="drop_user">Eliminar Usuario</string>
+    <string name="fatal_error">A ocurrido un error inesperado</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

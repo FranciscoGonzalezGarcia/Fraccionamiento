@@ -35,10 +35,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
 import android.view.Menu;
-import android.widget.AdapterView;
 import android.widget.TextView;
-import android.widget.Toast;
-
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainAdminActivity extends AppCompatActivity {
@@ -48,8 +45,8 @@ public class MainAdminActivity extends AppCompatActivity {
     private TextView lblEmail;
     private ActionBarDrawerToggle toggle;
     private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
-    private FirebaseUser user = firebaseAuth.getCurrentUser();
     private CircleImageView imgUser;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -65,7 +62,6 @@ public class MainAdminActivity extends AppCompatActivity {
         lblUser = navHeader.findViewById(R.id.lblNavAdminUser);
         lblEmail = navHeader.findViewById(R.id.lblNavAdminEmail);
         imgUser = navHeader.findViewById(R.id.imageNavAdminUser);
-
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
@@ -97,10 +93,6 @@ public class MainAdminActivity extends AppCompatActivity {
 
             }
         });
-
-        if(user==null){
-            goToLogin();
-        }
 
 
         // Passing each menu ID as a set of Ids because each
@@ -151,8 +143,6 @@ public class MainAdminActivity extends AppCompatActivity {
         // Properties for item selected
         menuItem.setChecked(true);
 
-        // Set title
-        Intent intentBar;
         switch(menuItem.getItemId()){
             case R.id.action_logout:
                 logout();

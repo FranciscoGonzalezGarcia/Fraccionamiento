@@ -9,10 +9,12 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".EditUserActivity"></activity>
+        <activity android:name=".Activities.Admin.AddNewUserActivity" />
         <activity
             android:name=".Activities.Admin.MainAdminActivity"
             android:label="@string/title_activity_main_admin"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
         <activity
             android:name=".Activities.LoginActivity"
             android:screenOrientation="portrait"
@@ -25,7 +27,9 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.Client.MainActivity" />
+        <activity
+            android:name=".Activities.Client.MainActivity"
+            android:label="@string/add_new_user" />
     </application>
 
 </manifest>

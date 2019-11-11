@@ -5,4 +5,8 @@
         <item name="windowNoTitle">true</item>
         <item name="android:statusBarColor">@android:color/transparent</item>
     </style>
+    <style name="recycler_padding">
+        <item name="android:paddingEnd">@dimen/padding_components</item>
+        <item name="android:paddingStart">@dimen/padding_components</item>
+    </style>
 </resources>

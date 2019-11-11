@@ -36,6 +36,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtEmail;
     private EditText txtPass;
     private AlertDialog alertDialog;
+    final FirebaseAuth fBAuth = FirebaseAuth.getInstance();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +59,7 @@ public class LoginActivity extends AppCompatActivity {
                 }
             }
         });
-        // Obtenemo una instancia de autnticación con firebase
-        final FirebaseAuth fBAuth = FirebaseAuth.getInstance();
+
         // validamos si existe una sesión activa en la app
         if(fBAuth.getCurrentUser()!=null){
             // si existe una sesión, vamos a la Activity principal
@@ -181,7 +181,21 @@ public class LoginActivity extends AppCompatActivity {
 
 }
 
+    @Override
+    protected void onStart() {
+        if(fBAuth.getCurrentUser()!=null){
+            // si existe una sesión, vamos a la Activity principal
+            goToMainActivity(fBAuth.getCurrentUser());
+        }
+        super.onStart();
+    }
 
-
-
+    @Override
+    protected void onResume() {
+        if(fBAuth.getCurrentUser()!=null){
+            // si existe una sesión, vamos a la Activity principal
+            goToMainActivity(fBAuth.getCurrentUser());
+        }
+        super.onResume();
+    }
 }

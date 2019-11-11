@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="15dp"
+    tools:context=".EditUserActivity">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/edit_data"
+        android:fontFamily="@font/rubik_regular"
+        android:textSize="24sp"
+        android:textColor="@android:color/black"
+        android:layout_marginBottom="15dp"/>
+
+
+    <EditText
+        android:id="@+id/txtEditName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/name_span"
+        android:fontFamily="@font/rubik_light"
+        android:inputType="text"
+        android:layout_marginBottom="15dp"/>
+
+    <EditText
+        android:id="@+id/txtEditLastName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/last_name_spn"
+        android:layout_marginBottom="15dp"
+        android:inputType="text"/>
+
+    <EditText
+        android:id="@+id/txtEditEmail"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/email_spn"
+        android:layout_marginBottom="15dp"
+        android:inputType="textEmailAddress"/>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_radius"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/save"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginBottom="56dp"
+        android:layout_marginEnd="10dp"
+        />
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_radius"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/reset_password"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp"
+        />
+
+
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_radius_warning"
+        android:textColor="@android:color/white"
+        android:fontFamily="@font/rubik_medium"
+        android:text="@string/drop_user"
+        android:layout_gravity="center_horizontal"
+        android:textSize="16sp"
+        android:padding="10dp"
+        android:layout_marginBottom="15dp"
+        android:layout_marginEnd="10dp"
+        />
+
+</LinearLayout>

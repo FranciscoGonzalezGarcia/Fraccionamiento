@@ -6,7 +6,15 @@ public class UserClass {
     private String urlImg;
     private String lastName;
     private String role;
+    private String key;
 
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
 
     public UserClass() {
     }
