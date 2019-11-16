@@ -49,6 +49,10 @@
     <string name="save">Guardar</string>
     <string name="drop_user">Eliminar Usuario</string>
     <string name="fatal_error">A ocurrido un error inesperado</string>
+    <string name="successfull_user_add">Usuario agregado correctamente</string>
+    <string name="already_user">El usuario ya existe</string>
+    <string name="pass_not_match">Las contraseñas no conciden</string>
+    <string name="minor_7">Minímo 7 caracteres</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

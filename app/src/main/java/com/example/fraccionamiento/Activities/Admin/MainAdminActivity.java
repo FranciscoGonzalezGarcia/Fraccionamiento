@@ -2,16 +2,12 @@ package com.example.fraccionamiento.Activities.Admin;
 
 import android.content.Intent;
 import android.os.Bundle;
-
 import com.example.fraccionamiento.Activities.LoginActivity;
 import com.example.fraccionamiento.Classes.UserClass;
 import com.example.fraccionamiento.R;
-import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import android.view.MenuItem;
 import android.view.View;
-
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.navigation.NavController;

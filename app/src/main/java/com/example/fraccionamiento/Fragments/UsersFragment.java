@@ -19,7 +19,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.fraccionamiento.Activities.Admin.AddNewUserActivity;
 import com.example.fraccionamiento.Adapters.AdapterUsers;
 import com.example.fraccionamiento.Classes.UserClass;
-import com.example.fraccionamiento.EditUserActivity;
+import com.example.fraccionamiento.Activities.Admin.EditUserActivity;
 import com.example.fraccionamiento.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.database.DataSnapshot;

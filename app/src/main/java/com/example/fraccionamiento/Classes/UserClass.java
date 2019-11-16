@@ -8,6 +8,14 @@ public class UserClass {
     private String role;
     private String key;
 
+    public UserClass(String name, String email, String lastName, String role, String urlImg) {
+        this.name = name;
+        this.email = email;
+        this.lastName = lastName;
+        this.role = role;
+        this.urlImg = urlImg;
+    }
+
     public String getKey() {
         return key;
     }

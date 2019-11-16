@@ -1,4 +1,4 @@
-package com.example.fraccionamiento;
+package com.example.fraccionamiento.Activities.Admin;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
@@ -10,6 +10,8 @@ import android.view.MenuInflater;
 import android.view.MenuItem;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import com.example.fraccionamiento.R;
 
 public class EditUserActivity extends AppCompatActivity {
     private EditText name, lastName, email;
