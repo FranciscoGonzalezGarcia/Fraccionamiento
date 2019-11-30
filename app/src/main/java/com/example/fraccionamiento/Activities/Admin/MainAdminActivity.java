@@ -3,6 +3,7 @@ package com.example.fraccionamiento.Activities.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.fraccionamiento.Activities.LoginActivity;
+import com.example.fraccionamiento.Classes.FirebaseClass;
 import com.example.fraccionamiento.Classes.UserClass;
 import com.example.fraccionamiento.R;
 
@@ -35,13 +36,15 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainAdminActivity extends AppCompatActivity {
-
+// Declaramos las variables
     private AppBarConfiguration mAppBarConfiguration;
     private TextView lblUser;
     private TextView lblEmail;
     private ActionBarDrawerToggle toggle;
-    private FirebaseAuth firebaseAuth = FirebaseAuth.getInstance();
+    private FirebaseAuth firebaseAuth;
     private CircleImageView imgUser;
+    private FirebaseDatabase database = FirebaseDatabase.getInstance();
+
 
 
     @Override
@@ -51,6 +54,13 @@ public class MainAdminActivity extends AppCompatActivity {
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
+
+        //Asignamos las variables a las vistas
+
+        firebaseAuth = FirebaseAuth.getInstance();
+
+
+        // Asignamos las vistas a los objetos manipulables, la barra de navegación lateral izquierda
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         NavigationView navigationView = findViewById(R.id.nav_view);
 
@@ -61,13 +71,8 @@ public class MainAdminActivity extends AppCompatActivity {
 
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
 
-        if(user==null){
-            goToLogin();
-        }
-
-        // User Authentication
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        DatabaseReference myRef = database.getReference("users");
+        // Creamos una instancia a la base de datos y obtenemos los datos del usuario
+        DatabaseReference myRef = database.getReference(FirebaseClass.USERS);
 
         myRef.child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -79,9 +84,6 @@ public class MainAdminActivity extends AppCompatActivity {
                 if(userDatabase.getEmail()!=null){
                     lblEmail.setText(userDatabase.getEmail());
                 }
-                if(userDatabase.getUrlImg()!=null){
-                    Picasso.get().load(userDatabase.getUrlImg()).into(imgUser);
-                }
             }
 
             @Override
@@ -91,11 +93,9 @@ public class MainAdminActivity extends AppCompatActivity {
         });
 
 
-        // Passing each menu ID as a set of Ids because each
-        // menu should be considered as top level destinations.
+        // Configuramos la App bar y asignamos sus respectivos items
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_gallery, R.id.nav_slideshow,
-                R.id.nav_tools, R.id.nav_share, R.id.nav_send)
+                R.id.nav_home, R.id.nav_share)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -107,12 +107,14 @@ public class MainAdminActivity extends AppCompatActivity {
         toggle.syncState();
     }
 
+
+    // metodo para regresar al login
     private void goToLogin() {
-        finish();
-        Intent goToLogin = new Intent(this, LoginActivity.class);
-        startActivity(goToLogin);
+        Intent intent = new Intent(MainAdminActivity.this, LoginActivity.class);
+        startActivity(intent);
     }
 
+    // Asignamos los iconos del menu superior derecho
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
@@ -120,6 +122,7 @@ public class MainAdminActivity extends AppCompatActivity {
         return true;
     }
 
+    // Brindamos accion a los items
     @Override
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(toggle.onOptionsItemSelected(item)){
@@ -128,6 +131,7 @@ public class MainAdminActivity extends AppCompatActivity {
         return super.onOptionsItemSelected(item);
     }
 
+    // Controller para la navigation web
     @Override
     public boolean onSupportNavigateUp() {
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -146,6 +150,7 @@ public class MainAdminActivity extends AppCompatActivity {
 
         }
     }
+
 
     private void logout() {
         firebaseAuth.signOut();

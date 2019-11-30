@@ -1,90 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:orientation="vertical"
-    android:padding="15dp"
-    tools:context=".Activities.Admin.EditUserActivity">
+    android:layout_height="wrap_content"
+    tools:context=".Activities.Admin.EditUserActivity"
+    android:padding="15dp">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/edit_data"
-        android:fontFamily="@font/rubik_regular"
-        android:textSize="24sp"
-        android:textColor="@android:color/black"
-        android:layout_marginBottom="15dp"/>
-
-
-    <EditText
-        android:id="@+id/txtEditName"
+    <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/name_span"
-        android:fontFamily="@font/rubik_light"
-        android:inputType="text"
-        android:layout_marginBottom="15dp"/>
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
 
-    <EditText
-        android:id="@+id/txtEditLastName"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/last_name_spn"
-        android:layout_marginBottom="15dp"
-        android:inputType="text"/>
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/name_span"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
 
-    <EditText
-        android:id="@+id/txtEditEmail"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:hint="@string/email_spn"
-        android:layout_marginBottom="15dp"
-        android:inputType="textEmailAddress"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_radius"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/save"
-        android:layout_gravity="center_horizontal"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="56dp"
-        android:layout_marginEnd="10dp"
-        />
+        <TextView
+            android:id="@+id/txtEditUserCompleteName"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/name_span"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_light"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"/>
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_radius"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/reset_password"
-        android:layout_gravity="center_horizontal"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="10dp"
-        />
+        <androidx.recyclerview.widget.RecyclerView
+            android:layout_marginTop="10dp"
+            android:id="@+id/rcVwPayments"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            style="@style/recycler_padding">
+
+        </androidx.recyclerview.widget.RecyclerView>
+
+        <TextView
+            android:id="@+id/lblNotPaymentsFound"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/no_element_found"
+            android:gravity="center_horizontal"
+            android:layout_gravity="center_vertical"
+            android:fontFamily="@font/rubik_medium"
+            android:visibility="invisible"
+            android:layout_marginEnd="10dp"/>
+
+
+    </LinearLayout>
 
 
 
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:background="@drawable/button_radius_warning"
-        android:textColor="@android:color/white"
-        android:fontFamily="@font/rubik_medium"
-        android:text="@string/drop_user"
-        android:layout_gravity="center_horizontal"
-        android:textSize="16sp"
-        android:padding="10dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginEnd="10dp"
-        />
 
-</LinearLayout>
+</androidx.core.widget.NestedScrollView>

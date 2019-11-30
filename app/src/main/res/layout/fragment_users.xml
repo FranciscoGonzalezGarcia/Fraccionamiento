@@ -47,11 +47,19 @@
             android:gravity="end"
             android:padding="@dimen/padding_small_elements">
 
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/build"
+                android:fontFamily="@font/rubik_medium"
+                android:textSize="18sp"
+                android:layout_marginEnd="5dp"/>
+
             <androidx.appcompat.widget.AppCompatSpinner
                 android:id="@+id/spnOrderBy"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:entries="@array/spinner_users_order"
+                android:entries="@array/builds"
                 android:spinnerMode="dropdown" />
 
         </LinearLayout>

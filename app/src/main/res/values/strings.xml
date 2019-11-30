@@ -37,7 +37,7 @@
     <string name="last_name">lastName</string>
     <string name="add_new_user">Agregar Usuario</string>
     <string name="name_spanish">Nombre</string>
-    <string name="last_name_spn">Apellido</string>
+    <string name="last_name_spn">Apellidos</string>
     <string name="name_span">Nombre</string>
     <string name="email_spn">Correo</string>
     <string name="password_confirm">Confirmar contraseña</string>
@@ -53,6 +53,38 @@
     <string name="already_user">El usuario ya existe</string>
     <string name="pass_not_match">Las contraseñas no conciden</string>
     <string name="minor_7">Minímo 7 caracteres</string>
+    <string name="add_user_info_title">Agregar información del Usuario</string>
+    <string name="build">Edificio</string>
+    <string name="department">Departamento</string>
+    <string name="rent_cost_month">Costo de renta mensual</string>
+    <string name="price_symbol">$</string>
+    <string name="monthly_maintenance_cost">Costo de mantenimento mensual</string>
+    <string name="complete_register">Completar registro</string>
+    <string name="register_completed">Registro completado con exito</string>
+    <string name="user_added">Usuario agregado</string>
+    <string name="price_hint">0.00</string>
+    <string name="creating_user">Agregando usuario ...</string>
+    <string name="adding_info_user">Agreagando información del usuario ...</string>
+    <string name="uploading_data">Subiendo información ...</string>
+    <string name="arrived_day">Día de arribo ej. "11"</string>
+    <string name="day">Día</string>
+    <string name="month">Més</string>
+    <string name="year">Año</string>
+    <string name="total_pay">Total a pagar:</string>
+    <string name="date_pay">Fecha límite de pago:</string>
+    <string name="currently_money">Saldo actual:</string>
+    <string name="payed">Pagado</string>
+    <string name="not_payed">Adeudo</string>
+    <string name="balance">Saldo</string>
+    <string name="mount_debt">Adeudo: $</string>
+    <string name="receipts">Recibos</string>
+    <string name="payments">Pagos</string>
+    <string name="check_as_payed">¿Marcar como pagado?</string>
+    <string name="user_payments_info">Pagos del usuario</string>
+    <string name="yes">Si</string>
+    <string name="no">No</string>
+    <string name="successfully_updated_info">Información actualizado con exíto</string>
+    <string name="warning_info">Atención esta operación es irreversible, proceda con precaución</string>
 
     <!-- TODO: Remove or change this placeholder text -->
 </resources>

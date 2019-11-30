@@ -11,6 +11,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.Toast;
 
 import com.example.fraccionamiento.Activities.Client.MainActivity;
 import com.example.fraccionamiento.Classes.FirebaseClass;
@@ -36,7 +37,7 @@ public class LoginActivity extends AppCompatActivity {
     private EditText txtEmail;
     private EditText txtPass;
     private AlertDialog alertDialog;
-    final FirebaseAuth fBAuth = FirebaseAuth.getInstance();
+    private FirebaseAuth fBAuth;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -47,6 +48,8 @@ public class LoginActivity extends AppCompatActivity {
         txtEmail = findViewById(R.id.inputEmail);
         txtPass = findViewById(R.id.inputUserPass);
         btnLogin = findViewById(R.id.btnLogin);
+
+        fBAuth = FirebaseAuth.getInstance();
 
         // Declaramos la acción a seguir al pulsar el botón de iniciar sesión
         btnLogin.setOnClickListener(new View.OnClickListener() {
@@ -154,9 +157,10 @@ public class LoginActivity extends AppCompatActivity {
 
 
 
+    // Una vez tengamos los datos de conexín verificamos el valor del rol en la base de datos para direccionarlo al menu correspondiente
     private void goToMainActivity(FirebaseUser currentUser){
         DatabaseReference ref = FirebaseDatabase.getInstance().getReference();
-        ref.child("users").child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+        ref.child(FirebaseClass.USERS).child(currentUser.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
                 UserClass userDatabase = dataSnapshot.getValue(UserClass.class);
@@ -178,24 +182,24 @@ public class LoginActivity extends AppCompatActivity {
             }
         });
 
-
-}
+    }
 
     @Override
     protected void onStart() {
-        if(fBAuth.getCurrentUser()!=null){
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
             // si existe una sesión, vamos a la Activity principal
-            goToMainActivity(fBAuth.getCurrentUser());
+            goToMainActivity(FirebaseAuth.getInstance().getCurrentUser());
         }
         super.onStart();
     }
 
-    @Override
-    protected void onResume() {
-        if(fBAuth.getCurrentUser()!=null){
-            // si existe una sesión, vamos a la Activity principal
-            goToMainActivity(fBAuth.getCurrentUser());
-        }
-        super.onResume();
-    }
+    //    @Override
+//    protected void onResume() {
+//
+//        super.onResume();
+//        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+//            // si existe una sesión, vamos a la Activity principal
+//            goToMainActivity(FirebaseAuth.getInstance().getCurrentUser());
+//        }
+//    }
 }

@@ -1,4 +1,4 @@
-package com.example.fraccionamiento.ui.share;
+package com.example.fraccionamiento.Fragments;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,22 +14,13 @@ import androidx.lifecycle.ViewModelProviders;
 
 import com.example.fraccionamiento.R;
 
-public class ShareFragment extends Fragment {
+// Fragment acerca de
 
-    private ShareViewModel shareViewModel;
+public class AboutFragment extends Fragment {
 
     public View onCreateView(@NonNull LayoutInflater inflater,
                              ViewGroup container, Bundle savedInstanceState) {
-        shareViewModel =
-                ViewModelProviders.of(this).get(ShareViewModel.class);
         View root = inflater.inflate(R.layout.fragment_share, container, false);
-        final TextView textView = root.findViewById(R.id.text_share);
-        shareViewModel.getText().observe(this, new Observer<String>() {
-            @Override
-            public void onChanged(@Nullable String s) {
-                textView.setText(s);
-            }
-        });
         return root;
     }
 }
