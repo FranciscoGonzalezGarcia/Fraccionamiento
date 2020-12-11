@@ -8,13 +8,16 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.fraccionamiento.Activities.LoginActivity;
+import com.example.fraccionamiento.CalendarClientActivity;
 import com.example.fraccionamiento.Classes.FirebaseClass;
-import com.example.fraccionamiento.Classes.PaymentInfoClass;
+import com.example.fraccionamiento.Classes.NotificationClass;
 import com.example.fraccionamiento.Classes.UserClass;
+import com.example.fraccionamiento.ProfileActivity;
 import com.example.fraccionamiento.R;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
@@ -32,13 +35,14 @@ public class MainActivity extends AppCompatActivity {
 
     // Declaración de variables
     private FirebaseAuth firebaseAuth;
-    private TextView txtPayDate, txtQuantityPay, txtIsPayed;
-    private FirebaseUser user;
+    private TextView txtPayDate, txtQuantityPay;
+    private FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
     private ImageView imgVwIconPayStatus;
     private final DatabaseReference mRef = FirebaseDatabase.getInstance().getReference();
     private DatabaseReference mRefUser;
     private DatabaseReference mRefPaymentInfo;
     private ValueEventListener valueEventListenerPayInfo;
+    private Boolean flagNotifications = false;
 
     // Creamos la vista de la aplicación y asignamos las respectivas vistas a los objetos
 
@@ -46,24 +50,13 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        ActionBar toolbar = getSupportActionBar();
+        if(toolbar!=null){
+            toolbar.setTitle(R.string.home_page);
+        }
         txtPayDate = findViewById(R.id.txtPayDate);
         txtQuantityPay = findViewById(R.id.txtQuantityPay);
-        txtIsPayed = findViewById(R.id.txtIsPayed);
-        imgVwIconPayStatus = findViewById(R.id.imgVwIconPayStatus);
-        ActionBar toolbar = getSupportActionBar();
 
-        if(toolbar!=null){
-            toolbar.setTitle(R.string.balance);
-        }
-
-
-
-        // Creamos las instancias a las bases de datos
-
-        firebaseAuth = FirebaseAuth.getInstance();
-        user = firebaseAuth.getCurrentUser();
-
-        // Creamos un objeto para obtener la fecha actual y al macenarla en formato numerico
         Date date = new Date();
         Calendar cal = Calendar.getInstance(TimeZone.getTimeZone("America/Mexico_City"));
         cal.setTime(date);
@@ -71,92 +64,38 @@ public class MainActivity extends AppCompatActivity {
         final int year = cal.get(Calendar.YEAR);
         final int month = cal.get(Calendar.MONTH);
 
+        // Creamos las instancias a las bases de datos
+        firebaseAuth = FirebaseAuth.getInstance();
+        user = firebaseAuth.getCurrentUser();
 
-        // Obtenernos la información del usuario acerca de su deuda actual
-
-        mRefUser = mRef.child(FirebaseClass.USERS).child(user.getUid());
-        mRefPaymentInfo = mRef.child(FirebaseClass.PAYMENT_INFO).child(FirebaseClass.USERS).child(user.getUid());
-        valueEventListenerPayInfo = new ValueEventListener() {
+        mRef.child(FirebaseClass.USERS).child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                final UserClass userClass = dataSnapshot.getValue(UserClass.class);
-                mRefPaymentInfo.addListenerForSingleValueEvent(new ValueEventListener() {
-                    @Override
-                    public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                        PaymentInfoClass paymentInfo = dataSnapshot.getValue(PaymentInfoClass.class);
-                            if(userClass.getDebt()){
-                                if(paymentInfo!=null){
-                                    txtQuantityPay.setText(String.valueOf(paymentInfo.getRentTotal()));
-                                    int realMonth;
-                                    if (paymentInfo.getPaymentDay() >= day) {
-                                        realMonth = month + 1;
-                                    }else {
-                                        realMonth = month + 2;
-                                    }
-                                    String limitDay;
-                                    if(realMonth<12){
-                                        limitDay = paymentInfo.getPaymentDay() + " / " + realMonth + " / " + year;
-                                    }else {
-                                        limitDay = paymentInfo.getPaymentDay() + " / " + 1 + " / " + (year+1);
-                                    }
+                UserClass userClass = dataSnapshot.getValue(UserClass.class);
+                int rentTotal = userClass.getRent()+userClass.getMaintenance();
+                txtQuantityPay.setText(String.valueOf(rentTotal));
+                int realMonth;
+                if(userClass.getPayDay()>=day){
+                    realMonth = month + 1;
+                }else {
+                    realMonth = month +2;
+                }
 
-                                    txtPayDate.setText(limitDay);
-                                }else {
-                                    txtQuantityPay.setText(getString(R.string.error));
-                                    txtPayDate.setText(getString(R.string.error));
-                                }
+                String limitDay;
+                if(realMonth<12){
+                    limitDay = userClass.getPayDay() + " / " + realMonth + " / " + year;
+                }else {
+                    limitDay = userClass.getPayDay() + " / " + 1 + " / " + (year+1);
+                }
 
-                                txtIsPayed.setText(getString(R.string.not_payed));
-                                imgVwIconPayStatus.setImageDrawable(getDrawable(R.drawable.ic_not_payed));
-
-                            }else{
-                                if(paymentInfo!=null){
-                                    int realMonth;
-                                    if (paymentInfo.getPaymentDay() >= day) {
-                                        realMonth = month + 1;
-                                    }else {
-                                        realMonth = month + 2;
-                                    }
-                                    String limitDay;
-                                    if(realMonth<12){
-                                        limitDay = paymentInfo.getPaymentDay() + " / " + realMonth + " / " + year;
-                                    }else {
-                                        limitDay = paymentInfo.getPaymentDay() + " / " + 1 + " / " + (year+1);
-                                    }
-
-                                    txtPayDate.setText(limitDay);
-                                }else {
-                                    txtQuantityPay.setText(getString(R.string.error));
-                                    txtPayDate.setText(getString(R.string.error));
-                                }
-
-                                txtQuantityPay.setText("0.00");
-                                txtIsPayed.setText(getString(R.string.payed));
-                                imgVwIconPayStatus.setImageDrawable(getDrawable(R.drawable.ic_payed));
-
-
-                            }
-
-                        }
-
-                        @Override
-                        public void onCancelled(@NonNull DatabaseError databaseError) {
-
-                        }
-                    });
-
-
-
+                txtPayDate.setText(limitDay);
             }
 
             @Override
             public void onCancelled(@NonNull DatabaseError databaseError) {
 
             }
-        };
-
-
-        mRefUser.addValueEventListener(valueEventListenerPayInfo);
+        });
     }
 
 
@@ -164,7 +103,51 @@ public class MainActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         getMenuInflater().inflate(R.menu.menu_client, menu);
+        areThereNotifications();
         return true;
+    }
+
+    private void areThereNotifications() {
+       mRef.child(FirebaseClass.NOTIFICATIONS).child(user.getUid()).addListenerForSingleValueEvent(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for (DataSnapshot snapshot:dataSnapshot.getChildren()) {
+                    NotificationClass notification = snapshot.getValue(NotificationClass.class);
+                    if(notification.getChecked()){
+                        flagNotifications = false;
+                        invalidateOptionsMenu();
+                    }else {
+                        flagNotifications = true;
+                        invalidateOptionsMenu();
+                    }
+                }
+
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+
+    }
+
+    @Override
+    public boolean onPrepareOptionsMenu(Menu menu) {
+        if(flagNotifications){
+            menu.findItem(R.id.action_notifications).setIcon(R.drawable.ic_notifications_active);
+            flagNotifications = false;
+        }else{
+            menu.findItem(R.id.action_notifications).setIcon(R.drawable.ic_notifications);
+        }
+
+        return super.onPrepareOptionsMenu(menu);
+    }
+
+    @Override
+    protected void onResume() {
+        areThereNotifications();
+        super.onResume();
     }
 
     // funcion para determinar accion tras presionar iconos
@@ -176,9 +159,17 @@ public class MainActivity extends AppCompatActivity {
             case R.id.action_logout:
                 logout();
                 break;
-            case R.id.action_receipts:
-                Intent intent = new Intent(MainActivity.this, ReceiptsActivity.class);
+            case R.id.action_notifications:
+                Intent intent = new Intent(MainActivity.this, NotificationsActivity.class);
                 startActivity(intent);
+                break;
+            case R.id.action_profile:
+                Intent intent3 = new Intent(MainActivity.this, ProfileActivity.class);
+                startActivity(intent3);
+                break;
+            case R.id.action_calendar:
+                Intent intent1 = new Intent(MainActivity.this, CalendarClientActivity.class);
+                startActivity(intent1);
                 break;
         }
     }
@@ -198,17 +189,14 @@ public class MainActivity extends AppCompatActivity {
     }
 
 
-    // Remover eventos tras el abandono de la actividad
-
     @Override
-    protected void onPause() {
-        mRefUser.removeEventListener(valueEventListenerPayInfo);
-        super.onPause();
+    public void onBackPressed() {
+        logout();
     }
 
     @Override
-    protected void onResume() {
-        mRefUser.addValueEventListener(valueEventListenerPayInfo);
-        super.onResume();
+    public boolean onSupportNavigateUp() {
+        logout();
+        return false;
     }
 }

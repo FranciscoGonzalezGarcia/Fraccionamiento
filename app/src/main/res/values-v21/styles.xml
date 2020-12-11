@@ -9,4 +9,10 @@
         <item name="android:paddingEnd">@dimen/padding_components</item>
         <item name="android:paddingStart">@dimen/padding_components</item>
     </style>
+    <style name="app_bar_style">
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">256dp</item>
+        <item name="android:fitsSystemWindows">true</item>
+        <item name="android:theme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+    </style>
 </resources>

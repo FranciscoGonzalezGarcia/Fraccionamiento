@@ -85,6 +85,54 @@
     <string name="no">No</string>
     <string name="successfully_updated_info">Información actualizado con exíto</string>
     <string name="warning_info">Atención esta operación es irreversible, proceda con precaución</string>
+    <string name="home_page">Página principal\ndel cliente</string>
+    <string name="home_page_admin">Página principal\ndel Administrador</string>
+    <string name="cut_day">Corte</string>
+    <string name="user_info">Información del Usuario</string>
+    <string name="error_empty_fields">Ningún campo puede estar vacío</string>
+    <string name="updated_data">Usuario actualizado con exíto</string>
+    <string name="fail_updated_data">Error intente en otro momento</string>
+    <string name="deleted_data">Usuario eliminado con exíto</string>
+    <string name="error_deleted_data">Error, intente en otro momento</string>
+    <string name="atention">¡Atención!</string>
+    <string name="delete_user_message">Estas apunto de eliminar un usuario de forma permanente.\n¿Deseas continuar?</string>
+    <string name="deleting_user">Eliminando usuario...</string>
+    <string name="type_user_quest">¿Que tipo de usuario deseas agregar?</string>
+    <string name="menu_calendar">Reuniones</string>
 
     <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="title_calendar">Título de la reunión</string>
+    <string name="calendar_description">Descripción de la reunión</string>
+    <string name="double_colon"> : </string>
+    <string name="zero">" 0 "</string>
+    <string name="calendar_hour">Hora de la reuninón</string>
+    <string name="add_calendar">Agendar Reunión</string>
+    <string name="calendar_date">Fecha de la reunión</string>
+    <string name="slash">" / "</string>
+    <string name="to">a las</string>
+    <string name="title_activity_calendar_client">CalendarClientActivity</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+
+
+    <string name="notifications_checked">Marcar todo como leído</string>
+    <string name="notifications_clear">Eliminar notificaciones</string>
+    <string name="notification">Notificaciones</string>
+    <string name="new_notification">Se ha generado una nueva reunión:</string>
+    <string name="my_profile">Mi perfil</string>
+    <string name="email">Correo electrónico</string>
+    <string name="user_info_updated">Información actualizada con éxito</string>
+    <string name="user_info_failed_updated">No se pudo actualiza, intente más tarde</string>
+    <string name="udapte_user_info">Actualizar Información</string>
+    <string name="select_application">Seleccione la aplicación</string>
+    <string name="success_upload_image">Imagen cargada con éxito</string>
+    <string name="error_loading_image">Error al cargar imagen, intentelo más tarde</string>
+    <string name="delete_calendar_mensaje">¿Estas seguro que deseas eliminar esta reunión?</string>
 </resources>

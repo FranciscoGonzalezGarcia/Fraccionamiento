@@ -16,9 +16,31 @@ public class UserClass {
     private String role;
     private String key;
     private Boolean debt;
-    private String deptNum;
+    private int deptNum;
+    private String build;
+    private int payDay;
+    private int rent;
+    private int maintenance;
+    private String pass;
+
 
     public UserClass() {
+    }
+
+
+    public UserClass(String name, String email, String urlImg, String lastName, String role, String key, Boolean debt, int deptNum, String build, int payDay, int rent, int maintenance) {
+        this.name = name;
+        this.email = email;
+        this.urlImg = urlImg;
+        this.lastName = lastName;
+        this.role = role;
+        this.key = key;
+        this.debt = debt;
+        this.deptNum = deptNum;
+        this.build = build;
+        this.payDay = payDay;
+        this.rent = rent;
+        this.maintenance = maintenance;
     }
 
     public UserClass(String name, String email, String lastName, String role, String urlImg) {
@@ -46,7 +68,13 @@ public class UserClass {
         this.urlImg = map.get("urlImg");
     }
 
+    public String getPass() {
+        return pass;
+    }
 
+    public void setPass(String pass) {
+        this.pass = pass;
+    }
 
     public String getKey() {
         return key;
@@ -104,12 +132,44 @@ public class UserClass {
         this.debt = debt;
     }
 
-    public String getDeptNum() {
+    public int getDeptNum() {
         return deptNum;
     }
 
-    public void setDeptNum(String deptNum) {
+    public void setDeptNum(int deptNum) {
         this.deptNum = deptNum;
+    }
+
+    public String getBuild() {
+        return build;
+    }
+
+    public void setBuild(String build) {
+        this.build = build;
+    }
+
+    public int getPayDay() {
+        return payDay;
+    }
+
+    public void setPayDay(int payDay) {
+        this.payDay = payDay;
+    }
+
+    public int getRent() {
+        return rent;
+    }
+
+    public void setRent(int rent) {
+        this.rent = rent;
+    }
+
+    public int getMaintenance() {
+        return maintenance;
+    }
+
+    public void setMaintenance(int maintenance) {
+        this.maintenance = maintenance;
     }
 
     @Exclude
@@ -121,6 +181,10 @@ public class UserClass {
         result.put("email", email);
         result.put("role", role);
         result.put("debt", debt);
+        result.put("build", build);
+        result.put("payDay", payDay);
+        result.put("rent", rent);
+        result.put("maintenance", maintenance);
         return result;
     }
 }

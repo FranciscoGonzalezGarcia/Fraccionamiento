@@ -1,42 +1,42 @@
 {
   "project_info": {
-    "project_number": "545045038252",
-    "firebase_url": "https://fb-db-fraccionamiento.firebaseio.com",
-    "project_id": "fb-db-fraccionamiento",
-    "storage_bucket": "fb-db-fraccionamiento.appspot.com"
+    "project_number": "1070432025177",
+    "firebase_url": "https://fraccionamiento-d1721.firebaseio.com",
+    "project_id": "fraccionamiento-d1721",
+    "storage_bucket": "fraccionamiento-d1721.appspot.com"
   },
   "client": [
     {
       "client_info": {
-        "mobilesdk_app_id": "1:545045038252:android:a7815223c0c2414913cb09",
+        "mobilesdk_app_id": "1:1070432025177:android:0365ceb7c4c66ead644f48",
         "android_client_info": {
           "package_name": "com.example.fraccionamiento"
         }
       },
       "oauth_client": [
         {
-          "client_id": "545045038252-pt3qqo2hqq59i38dosoeausi1cmagvhs.apps.googleusercontent.com",
+          "client_id": "1070432025177-7hqqn7cife79igpk8gvp89ub3cu3gch0.apps.googleusercontent.com",
           "client_type": 1,
           "android_info": {
             "package_name": "com.example.fraccionamiento",
-            "certificate_hash": "a00fb7ea72364e1cc720536c492af315414a4538"
+            "certificate_hash": "82d3c3b79d1b093ea7259c3a6ee1ad6520741cdc"
           }
         },
         {
-          "client_id": "545045038252-u44vs0l2t04cr9i41ehjbdbct0ctrl7g.apps.googleusercontent.com",
+          "client_id": "1070432025177-9uqfcldiu6dvjv2q064u5k4h5c7cu5cs.apps.googleusercontent.com",
           "client_type": 3
         }
       ],
       "api_key": [
         {
-          "current_key": "AIzaSyCY4di9-GuW8SjZvjDVJqAWxGAdilg42vg"
+          "current_key": "AIzaSyB-Zk7ovmvazylwCD8DXcErF3BukrrEs3w"
         }
       ],
       "services": {
         "appinvite_service": {
           "other_platform_oauth_client": [
             {
-              "client_id": "545045038252-u44vs0l2t04cr9i41ehjbdbct0ctrl7g.apps.googleusercontent.com",
+              "client_id": "1070432025177-9uqfcldiu6dvjv2q064u5k4h5c7cu5cs.apps.googleusercontent.com",
               "client_type": 3
             }
           ]

@@ -1,7 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.core.widget.NestedScrollView
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -23,8 +22,8 @@
             android:layout_marginBottom="15dp"/>
 
 
-        <TextView
-            android:id="@+id/txtEditUserCompleteName"
+        <EditText
+            android:id="@+id/txtEditName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="@string/name_span"
@@ -33,25 +32,223 @@
             android:layout_marginStart="10dp"
             android:layout_marginBottom="15dp"/>
 
-        <androidx.recyclerview.widget.RecyclerView
-            android:layout_marginTop="10dp"
-            android:id="@+id/rcVwPayments"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/last_name_spn"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+
+        <EditText
+            android:id="@+id/txtEditUserLastName"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            style="@style/recycler_padding">
-
-        </androidx.recyclerview.widget.RecyclerView>
+            android:hint="@string/last_name_spn"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_light"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"/>
 
         <TextView
-            android:id="@+id/lblNotPaymentsFound"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/email_spn"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+
+        <EditText
+            android:id="@+id/txtEditEmail"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:text="@string/no_element_found"
-            android:gravity="center_horizontal"
-            android:layout_gravity="center_vertical"
+            android:hint="@string/email_spn"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_light"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/rent_cost_month"
             android:fontFamily="@font/rubik_medium"
-            android:visibility="invisible"
-            android:layout_marginEnd="10dp"/>
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+
+        <EditText
+            android:id="@+id/txtEditRent"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/rent_cost_month"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_light"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/monthly_maintenance_cost"
+            android:fontFamily="@font/rubik_medium"
+            android:textSize="18sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+
+        <EditText
+            android:id="@+id/txtEditMaintenance"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/monthly_maintenance_cost"
+            android:textSize="18sp"
+            android:fontFamily="@font/rubik_light"
+            android:layout_marginStart="10dp"
+            android:layout_marginBottom="15dp"/>
+
+<!--        <androidx.recyclerview.widget.RecyclerView-->
+<!--            android:layout_marginTop="10dp"-->
+<!--            android:id="@+id/rcVwPayments"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            style="@style/recycler_padding">-->
+
+<!--        </androidx.recyclerview.widget.RecyclerView>-->
+
+<!--        <TextView-->
+<!--            android:id="@+id/lblNotPaymentsFound"-->
+<!--            android:layout_width="match_parent"-->
+<!--            android:layout_height="wrap_content"-->
+<!--            android:text="@string/no_element_found"-->
+<!--            android:gravity="center_horizontal"-->
+<!--            android:layout_gravity="center_vertical"-->
+<!--            android:fontFamily="@font/rubik_medium"-->
+<!--            android:visibility="invisible"-->
+<!--            android:layout_marginEnd="10dp"/>-->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/build"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="15dp"/>
+
+                <EditText
+                    android:id="@+id/txtEditBuild"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/build"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/rubik_light"
+                    android:layout_marginBottom="15dp"
+                    android:inputType="number"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:layout_marginEnd="10dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/department"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="15dp"/>
+
+                <EditText
+                    android:id="@+id/txtEditDept"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/department"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/rubik_light"
+                    android:layout_marginBottom="15dp"
+                    android:inputType="number"/>
+
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/cut_day"
+                    android:fontFamily="@font/rubik_medium"
+                    android:textSize="18sp"
+                    android:textColor="@android:color/black"
+                    android:layout_marginBottom="15dp"/>
+                <EditText
+                    android:id="@+id/txtEditDay"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:hint="@string/cut_day"
+                    android:textSize="18sp"
+                    android:fontFamily="@font/rubik_light"
+                    android:layout_marginBottom="15dp"
+                    android:inputType="number"/>
+
+            </LinearLayout>
+
+
+
+
+        </LinearLayout>
+
+
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal">
+
+            <Button
+                android:id="@+id/btnSaveUser"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_save"
+                android:layout_marginEnd="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+            <Button
+                android:id="@+id/btnDeleteUser"
+                android:layout_width="50dp"
+                android:layout_height="50dp"
+                android:background="@drawable/ic_delete_black_red"
+                android:layout_marginStart="10dp"
+                android:foreground="?android:attr/selectableItemBackground"
+                />
+
+
+        </LinearLayout>
 
 
     </LinearLayout>

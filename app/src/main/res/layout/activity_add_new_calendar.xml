@@ -1,0 +1,201 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context=".Activities.Admin.AddNewUserActivity">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="vertical"
+        android:padding="35dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/refill_data"
+            android:fontFamily="@font/rubik_regular"
+            android:layout_gravity="center_horizontal"
+            android:textSize="24sp"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+
+        <EditText
+            android:id="@+id/txtAddCalendarTitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/title_calendar"
+            android:fontFamily="@font/rubik_light"
+            android:inputType="text"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/txtAddCalendarDescription"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/calendar_description"
+            android:layout_marginBottom="15dp"
+            android:background="@null"
+            android:gravity="top|left"
+            android:inputType="textMultiLine"
+            android:overScrollMode="always"
+            android:scrollbarStyle="insideInset"
+            android:scrollbars="vertical"
+            android:lines="6"
+            android:textAppearance="?android:attr/textAppearanceMedium"
+            android:scrollHorizontally="false"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calendar_date"
+            android:fontFamily="@font/rubik_regular"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="15dp">
+
+            <Spinner
+                android:id="@+id/spnDay"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/calendar_day"
+                >
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:fontFamily="@font/rubik_regular"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Spinner
+                android:id="@+id/spnMonth"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/calendar_month"
+                >
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/slash"
+                android:fontFamily="@font/rubik_regular"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Spinner
+                android:id="@+id/spnYear"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/calendar_years"
+                >
+            </Spinner>
+
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/calendar_hour"
+            android:fontFamily="@font/rubik_regular"
+            android:textSize="18dp"
+            android:layout_gravity="center_horizontal"
+            android:textColor="@android:color/black"
+            android:layout_marginBottom="15dp"/>
+
+        <Spinner
+            android:id="@+id/spnHourSystem"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:entries="@array/hour_system"
+            android:layout_gravity="center_horizontal"
+            android:layout_marginBottom="15dp"
+            >
+        </Spinner>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal"
+            android:gravity="center_horizontal"
+            android:layout_marginBottom="15dp">
+
+            <Spinner
+                android:id="@+id/spnHour1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/hours_1"
+                >
+            </Spinner>
+
+            <Spinner
+                android:id="@+id/spnHour2"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/hours_2"
+                >
+            </Spinner>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/double_colon"
+                android:fontFamily="@font/rubik_regular"
+                android:textSize="24sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="5dp"/>
+
+            <Spinner
+                android:id="@+id/spnMin1"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:entries="@array/minutes_1"
+                >
+            </Spinner>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/zero"
+                android:fontFamily="@font/rubik_light"
+                android:textSize="16sp"
+                android:textColor="@android:color/black"
+                android:layout_marginBottom="15dp"
+                android:layout_marginEnd="5dp"/>
+        </LinearLayout>
+
+
+
+        <Button
+            android:id="@+id/btnAddCalendar"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_radius"
+            android:textColor="@android:color/white"
+            android:fontFamily="@font/rubik_medium"
+            android:text="@string/add_calendar"
+            android:layout_gravity="center_horizontal"
+            android:textSize="16sp"
+            android:padding="10dp"
+            android:foreground="?android:attr/selectableItemBackground"
+            />
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

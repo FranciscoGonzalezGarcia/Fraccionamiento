@@ -166,12 +166,12 @@ public class LoginActivity extends AppCompatActivity {
                 UserClass userDatabase = dataSnapshot.getValue(UserClass.class);
                 if(userDatabase.getRole().equals(FirebaseClass.ADMIN)){
                     Intent intent = new Intent(LoginActivity.this, MainAdminActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
+                    finish();
                 }if (userDatabase.getRole().equals(FirebaseClass.CLIENT)){
                     Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY);
                     startActivity(intent);
+                    finish();
                 }
 
             }

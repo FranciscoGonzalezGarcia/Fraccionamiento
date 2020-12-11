@@ -4,9 +4,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 
-import android.app.AlertDialog;
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -40,8 +38,9 @@ public class AddNewUserActivity extends AppCompatActivity {
     private FirebaseUser user;
     private FirebaseAuth mAuth;
     private DatabaseReference mRef;
-    private String nameS, lastNameS, emailS, passS, confirmPassS, build, departmaent;
-    private int maintenance, rent, payment;
+    private String nameS, lastNameS, emailS, passS, confirmPassS, build;
+
+    private int maintenance, rent, payment, department;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,7 +60,7 @@ public class AddNewUserActivity extends AppCompatActivity {
         pass = findViewById(R.id.txtAddPass);
         confirmPass = findViewById(R.id.txtAddConfirmPass);
         txtMaintenance = findViewById(R.id.txtAddInfoUserMaintenance);
-        txtRent = findViewById(R.id.txtAddPaymentDay);
+        txtRent = findViewById(R.id.txtAddInfoUserRent);
         paymentDay = findViewById(R.id.txtAddPaymentDay);
         txtBuild = findViewById(R.id.txtBuild);
         txtDepartment = findViewById(R.id.txtDepartment);
@@ -85,14 +84,34 @@ public class AddNewUserActivity extends AppCompatActivity {
                 passS = pass.getText().toString();
                 lastNameS = lastName.getText().toString();
                 confirmPassS = confirmPass.getText().toString();
-                maintenance = Integer.parseInt(txtMaintenance.getText().toString());
-                rent = Integer.parseInt(txtRent.getText().toString());
-                payment = Integer.parseInt(paymentDay.getText().toString());
+                if(txtMaintenance.getText().toString().isEmpty()){
+                    maintenance = 0;
+                }else {
+                    maintenance = Integer.parseInt(txtMaintenance.getText().toString());
+                }
+
+                if(txtRent.getText().toString().isEmpty()){
+                    rent = 0;
+                } else{
+                    rent = Integer.parseInt(txtRent.getText().toString());
+                }
+
+                if(paymentDay.getText().toString().isEmpty()){
+                   payment = 0;
+                }else{
+                    payment = Integer.parseInt(paymentDay.getText().toString());
+                }
+
+                if(txtDepartment.getText().toString().isEmpty()){
+                    department = 0;
+                }else{
+                    department = Integer.parseInt(txtDepartment.getText().toString());
+                }
                 build = txtBuild.getText().toString();
-                departmaent = txtDepartment.getText().toString();
 
                 // Validamos los campos
                 if(areCorrectFields()){
+
                     //Nos aseguramos que las contraseñas cincidan
                     if(passMatch()){
                         // Intentamos crear un usuario con los datos brindados
@@ -102,7 +121,19 @@ public class AddNewUserActivity extends AppCompatActivity {
                                 if(task.isSuccessful()){
                                     // Si es exitoso, almacenamos los datos del usuario en un nodo de firebase
                                     FirebaseUser fUser = FirebaseAuth.getInstance().getCurrentUser();
-                                    final UserClass userClass = new UserClass(nameS, emailS, lastNameS, "client", "url", false);
+                                    final UserClass userClass = new UserClass();
+                                    userClass.setName(nameS);
+                                    userClass.setLastName(lastNameS);
+                                    userClass.setEmail(emailS);
+                                    userClass.setRole(FirebaseClass.CLIENT);
+                                    userClass.setUrlImg("url");
+                                    userClass.setDebt(false);
+                                    userClass.setBuild(build);
+                                    userClass.setDeptNum(department);
+                                    userClass.setRent(rent);
+                                    userClass.setMaintenance(maintenance);
+                                    userClass.setPayDay(payment);
+                                    userClass.setPass(passS);
                                     // Cerramos el proceso
                                     prgDlg.dismiss();
 
@@ -114,19 +145,9 @@ public class AddNewUserActivity extends AppCompatActivity {
                                     // Insertamos los datos del usuario
                                     mRef.child(fUser.getUid()).setValue(userClass);
 
-                                    // Creamos una instacia con la base de datos donde guardaremos la información de pago
-                                    DatabaseReference userRef = FirebaseDatabase.getInstance().getReference().child(FirebaseClass.PAYMENT_INFO).child(FirebaseClass.USERS).child(fUser.getUid());
-                                    int rentTotal = maintenance+rent;
-                                    PaymentInfoClass paymentInfo = new PaymentInfoClass(maintenance, payment, rent, rentTotal);
-                                    Map<String, Object> paymentInfoMap = paymentInfo.toMap();
-                                    userRef.updateChildren(paymentInfoMap);
-
                                     // Creamos una instacia con la base de datos donde guardaremos la información de alojamiento del huesped
 
-                                    DatabaseReference mRefBuild = FirebaseDatabase.getInstance().getReference().child(FirebaseClass.BUILDS).child(build).child(FirebaseClass.USERS);
-                                    Map<String, Object> uidAdd = new HashMap<>();
-                                    uidAdd.put(fUser.getUid(), departmaent);
-                                    mRefBuild.updateChildren(uidAdd);
+
                                     Toast.makeText(AddNewUserActivity.this, getString(R.string.successfull_user_add), Toast.LENGTH_LONG).show();
 
                                     // Cerramos el proceso - cerramos la sesión del usuario que se creo

@@ -2,17 +2,41 @@
 <menu xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+<!--    <item-->
+<!--        android:id="@+id/action_receipts"-->
+<!--        android:icon="@drawable/ic_check_list"-->
+<!--        android:title="@string/receipts"-->
+<!--        android:onClick="iconAction"-->
+<!--        app:showAsAction="ifRoom"/>-->
     <item
-        android:id="@+id/action_receipts"
-        android:icon="@drawable/ic_check_list"
-        android:title="@string/receipts"
+    android:id="@+id/action_notifications"
+    android:icon="@drawable/ic_notifications"
+    android:title="@string/receipts"
+    android:onClick="iconAction"
+    app:showAsAction="always"
+    android:foreground="?android:attr/selectableItemBackground"/>
+
+    <item
+        android:id="@+id/action_profile"
+        android:icon="@drawable/ic_profile"
+        android:title="@string/my_profile"
         android:onClick="iconAction"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        android:foreground="?android:attr/selectableItemBackground"/>
+
+    <item
+        android:id="@+id/action_calendar"
+        android:icon="@drawable/ic_notifications"
+        android:title="@string/menu_calendar"
+        android:onClick="iconAction"
+        app:showAsAction="never"
+        android:foreground="?android:attr/selectableItemBackground"/>
     <item
         android:id="@+id/action_logout"
         android:orderInCategory="100"
         android:title="@string/action_logout"
         android:onClick="iconAction"
-        app:showAsAction="never" />
+        app:showAsAction="never"
+        android:foreground="?android:attr/selectableItemBackground"/>
 
 </menu>

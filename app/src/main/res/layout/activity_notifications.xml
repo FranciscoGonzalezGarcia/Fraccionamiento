@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Activities.Client.NotificationsActivity"
+    android:orientation="vertical"
+    android:padding="10dp">
+
+<!--    <include-->
+<!--        layout="@layout/app_bar_activity"-->
+<!--        android:layout_width="match_parent"-->
+<!--        android:layout_height="wrap_content" />-->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        >
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/recyclerNotifications"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                >
+
+            </androidx.recyclerview.widget.RecyclerView>
+
+    </ScrollView>
+
+    <TextView
+        android:id="@+id/lblNoFoundNotifications"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:text="@string/no_element_found"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="18sp"
+        android:visibility="gone"
+        />
+
+
+</LinearLayout>

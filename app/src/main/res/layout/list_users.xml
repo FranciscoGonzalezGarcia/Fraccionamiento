@@ -3,15 +3,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:card_view="http://schemas.android.com/tools">
+    xmlns:card_view="http://schemas.android.com/tools"
+    android:padding="10dp">
 
     <androidx.cardview.widget.CardView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        card_view:cardElevation="2dp"
+        card_view:cardElevation="4dp"
         android:foreground="?android:attr/selectableItemBackground"
         card_view:cardUseCompatPadding="true"
-        android:layout_marginBottom="10dp"
+        android:layout_marginBottom="3dp"
         >
 
         <LinearLayout
@@ -23,12 +24,14 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:orientation="horizontal">
+                android:orientation="horizontal"
+                android:gravity="end">
 
-                <ImageView
+                <de.hdodenhof.circleimageview.CircleImageView
+                    android:id="@+id/imgUser"
                     android:layout_width="@dimen/user_image"
                     android:layout_height="@dimen/user_image"
-                    android:src="@drawable/ic_account_circle_black" />
+                    android:src="@drawable/ic_account_circle_black"/>
 
                 <LinearLayout
                     android:layout_width="match_parent"
@@ -48,6 +51,26 @@
 
                 </LinearLayout>
 
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_marginTop="5dp"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal"
+                android:gravity="end">
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/build"
+                    android:fontFamily="@font/rubik_regular"
+                    android:textColor="@android:color/black"
+                    android:layout_marginEnd="5dp"/>
+                <TextView
+                    android:id="@+id/userBuilt"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/price_hint" />
 
             </LinearLayout>
 
@@ -56,7 +79,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:orientation="horizontal"
-                android:gravity="start">
+                android:gravity="end">
                 <TextView
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
@@ -72,25 +95,7 @@
 
             </LinearLayout>
 
-            <LinearLayout
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:orientation="horizontal"
-                android:gravity="end">
-                <TextView
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:text="@string/payments"
-                    android:fontFamily="@font/rubik_regular"
-                    android:textColor="@android:color/black"
-                    android:layout_marginEnd="5dp"/>
-                <ImageView
-                    android:id="@+id/imgVwIconPayStatus"
-                    android:layout_width="wrap_content"
-                    android:layout_height="20dp"
-                    android:src="@drawable/ic_payed" />
 
-            </LinearLayout>
 
 
         </LinearLayout>

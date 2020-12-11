@@ -9,19 +9,31 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".Activities.Client.ReceiptsActivity"
-            android:screenOrientation="portrait"></activity>
-        <activity android:name=".Activities.Client.MainActivity"
-            android:screenOrientation="portrait"/>
+        <activity android:name=".ProfileActivity"/>
+        <activity android:name=".CalendarClientActivity" />
+        <activity android:name=".Activities.Admin.AddNewCalendarActivity" />
+        <activity android:name=".Activities.Client.NotificationsActivity" />
+        <activity android:name=".AddUserAdminActivity" />
+        <activity
+            android:name=".Activities.Client.ReceiptsActivity"
+            android:parentActivityName=".Activities.Client.MainActivity"
+            android:screenOrientation="portrait" />
+        <activity
+            android:name=".Activities.Client.MainActivity"
+            android:parentActivityName=".Activities.LoginActivity"
+            android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.Admin.EditUserActivity"
+            android:parentActivityName=".Activities.Admin.MainAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.Admin.AddNewUserActivity"
+            android:parentActivityName=".Activities.Admin.MainAdminActivity"
             android:screenOrientation="portrait" />
         <activity
             android:name=".Activities.Admin.MainAdminActivity"
             android:label="@string/title_activity_main_admin"
+            android:parentActivityName=".Activities.LoginActivity"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity

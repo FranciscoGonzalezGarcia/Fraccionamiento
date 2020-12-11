@@ -3,8 +3,10 @@ package com.example.fraccionamiento.Activities.Admin;
 import android.content.Intent;
 import android.os.Bundle;
 import com.example.fraccionamiento.Activities.LoginActivity;
+import com.example.fraccionamiento.Fragments.CalendarFragment;
 import com.example.fraccionamiento.Classes.FirebaseClass;
 import com.example.fraccionamiento.Classes.UserClass;
+import com.example.fraccionamiento.Fragments.UsersFragment;
 import com.example.fraccionamiento.R;
 
 import android.view.MenuItem;
@@ -24,7 +26,6 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.squareup.picasso.Picasso;
 
 import androidx.drawerlayout.widget.DrawerLayout;
 
@@ -36,7 +37,7 @@ import android.widget.TextView;
 import de.hdodenhof.circleimageview.CircleImageView;
 
 public class MainAdminActivity extends AppCompatActivity {
-// Declaramos las variables
+    // Declaramos las variables
     private AppBarConfiguration mAppBarConfiguration;
     private TextView lblUser;
     private TextView lblEmail;
@@ -44,7 +45,6 @@ public class MainAdminActivity extends AppCompatActivity {
     private FirebaseAuth firebaseAuth;
     private CircleImageView imgUser;
     private FirebaseDatabase database = FirebaseDatabase.getInstance();
-
 
 
     @Override
@@ -56,7 +56,6 @@ public class MainAdminActivity extends AppCompatActivity {
 
 
         //Asignamos las variables a las vistas
-
         firebaseAuth = FirebaseAuth.getInstance();
 
 
@@ -95,7 +94,7 @@ public class MainAdminActivity extends AppCompatActivity {
 
         // Configuramos la App bar y asignamos sus respectivos items
         mAppBarConfiguration = new AppBarConfiguration.Builder(
-                R.id.nav_home, R.id.nav_share)
+                R.id.nav_home, R.id.nav_calendar)
                 .setDrawerLayout(drawer)
                 .build();
         NavController navController = Navigation.findNavController(this, R.id.nav_host_fragment);
@@ -105,6 +104,8 @@ public class MainAdminActivity extends AppCompatActivity {
         toggle = new ActionBarDrawerToggle(this, drawer, R.string.open, R.string.close);
         drawer.addDrawerListener(toggle);
         toggle.syncState();
+
+
     }
 
 
@@ -118,7 +119,7 @@ public class MainAdminActivity extends AppCompatActivity {
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.main_admin, menu);
+        getMenuInflater().inflate(R.menu.menu_admin, menu);
         return true;
     }
 
@@ -156,4 +157,6 @@ public class MainAdminActivity extends AppCompatActivity {
         firebaseAuth.signOut();
         goToLogin();
     }
+
+
 }

@@ -6,7 +6,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Activities.Client.MainActivity">
+    tools:context=".Activities.Client.MainActivity"
+    android:gravity="center_horizontal|center_vertical">
 
     <LinearLayout
         android:layout_width="match_parent"
@@ -23,20 +24,7 @@
             android:fontFamily="@font/rubik_medium"
             android:textColor="@android:color/black"
             android:textSize="28sp"
-            android:text="@string/currently_money"/>
-        <TextView
-            android:id="@+id/txtIsPayed"
-            android:textAlignment="textStart"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:fontFamily="@font/rubik_regular"
-            android:textColor="@android:color/black"
-            android:textSize="28sp"/>
-
-        <ImageView
-            android:id="@+id/imgVwIconPayStatus"
-            android:layout_width="45dp"
-            android:layout_height="45dp" />
+            android:text="@string/total_pay"/>
 
 
     </LinearLayout>
@@ -55,7 +43,7 @@
             android:layout_marginEnd="5dp"
             android:fontFamily="@font/rubik_bold"
             android:textColor="@android:color/black"
-            android:textSize="48sp"
+            android:textSize="80sp"
             android:text="@string/price_symbol"/>
         <TextView
             android:id="@+id/txtQuantityPay"
@@ -64,7 +52,7 @@
             android:layout_height="wrap_content"
             android:fontFamily="@font/rubik_bold"
             android:textColor="@android:color/black"
-            android:textSize="48sp"
+            android:textSize="80sp"
             android:text="@string/price_hint"/>
 
     </LinearLayout>
@@ -82,12 +70,13 @@
             android:textAlignment="center"
             android:fontFamily="@font/rubik_medium"
             android:textColor="@android:color/black"
-            android:textSize="16sp"
+            android:textSize="30sp"
             android:text="@string/date_pay"/>
         <TextView
             android:id="@+id/txtPayDate"
             android:textColor="@android:color/black"
             android:textAlignment="center"
+            android:textSize="24sp"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"/>
 
